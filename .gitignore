@@ -1,0 +1,7 @@
+## for macOS
+**/.DS_Store
+
+*.aux
+*.log
+*.toc
+*.out
