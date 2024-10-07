@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}   % For mathematical symbols and equations
+\usepackage{geometry}  % For adjusting page margins
+\geometry{a4paper, margin=1in}
+
+\title{Machine Learning Assignment 1 Report}
+\author{111062117, Hsiang-Sheng Huang}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Regression Equation}
+$$y=\Phi(X)\mathbf{w}$$
+where $\Phi_j(x)=x^j$ is a polynomial function.
+
+\section{Variables and Regression Equation in Advance Part}
+I used all given variables and processed outliers with IQR truncation. The equation is same as the basic part, excluding the degree. I used a higher degree to try to catch more features and get a better $w$.
+
+\section{Difficulty Encountered}
+At the beginning, the cost got larger after iterations, sometimes it became NaN and got overflow exception.
+
+\section{Solutions and Reflections}
+I adjusted a lot of parameters. After a long time, I found that the learning rate is too large to handle the gradient decent. Then I picked a smaller learning rate, it worked.
+After the lab, I reflected that the learning rate could not be too large at first. We should pick a small value first. If it worked, we adjusted it larger.
+
+\end{document}
