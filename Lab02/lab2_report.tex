@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}   % For mathematical symbols and equations
+\usepackage{geometry}  % For adjusting page margins
+\geometry{a4paper, margin=1in}
+
+\title{Machine Learning Assignment 2 Report}
+\author{111062117, Hsiang-Sheng Huang}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Attribute Settings of the Random Forest Model}
+\subsection{Number of Trees}
+I used $5$ trees in the random forest model.
+
+\subsection{Number of Features}
+I used $\lfloor\sqrt{n_{\text{features}}}\rfloor = \lfloor\sqrt{30}\rfloor = 5$ features for each decision tree.
+
+\subsection{Number of Instances}
+The model was trained on $\lfloor n_{\text{samples}} \times 0.8 \rfloor = 5440$ instances, using 80\% of the available data.
+
+\section{Difficulty Encountered}
+One challenge I encountered was that the F1-score submitted to Kaggle did not reach a satisfactory level (the baseline score is 0.7), which stuck with me for a long time.
+
+\section{Solutions and Reflections}
+After experimenting with a variety of hyperparameters, the best result was achieved with 5 trees and a maximum depth of 3 for each tree.
+
+\end{document}
