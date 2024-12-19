@@ -133,6 +133,9 @@ class Activation():
 
             # GRADED FUNCTION: softmax_backward
             ### START CODE HERE ###
+            if len(Y.shape) == 3:  # If Y is (batch_size, 1, num_classes)
+                Y = Y.reshape(-1, Y.shape[-1])  # Reshape to (batch_size, num_classes)
+            
             Z = self.cache
             s = np.exp(Z - np.max(Z, axis=1, keepdims=True)) / np.sum(np.exp(Z - np.max(Z, axis=1, keepdims=True)), axis=1, keepdims=True)
             dZ = s - Y
