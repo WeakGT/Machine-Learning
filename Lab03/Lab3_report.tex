@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}   % For mathematical symbols and equations
+\usepackage{geometry}  % For adjusting page margins
+\geometry{a4paper, margin=1in}
+
+\title{Machine Learning Assignment 3 Report}
+\author{111062117, Hsiang-Sheng Huang}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Accuracy/F1-score Change between Perceptron and LDA}
+The difference in accuracy or F1-score between Perceptron and LDA is primarily due to the assumptions and learning mechanisms behind these two algorithms. The Perceptron is a linear classifier that updates its weights iteratively based on misclassified examples, which may not always find a globally optimal solution. On the other hand, LDA (Linear Discriminant Analysis) makes use of statistical properties. By maximizing class separability, LDA tends to perform better in cases where these assumptions hold, leading to \textbf{higher accuracy and F1-scores} in comparison to the Perceptron.
+
+\section{Does MAP Help? Why?}
+Based on the results obtained, there was no significant difference between the performance of LDA and LDA with MAP. Specifically:
+\begin{itemize}
+    \item \textbf{LDA:} Accuracy = 68.88\%, F1 Score = 0.6848
+    \item \textbf{LDA with MAP:} Accuracy = 68.82\%, F1 Score = 0.6875
+\end{itemize}
+The close performance metrics suggest that the incorporation of prior probabilities via MAP did not lead to a substantial improvement in this particular case. One possible reason is that while LDA with MAP attempts to fit the data using a Gaussian density function, introducing a more complex, non-linear approach, the data itself may still exhibit mostly linear characteristics. Thus, the added complexity does not significantly enhance the model's ability to classify the data. Additionally, the effectiveness of MAP could be influenced by how the validation data was split, as different splits may affect the balance of classes and thus the utility of the priors.
+
+\section{Solving Difficulties and Reflections}
+During the implementation, I encountered issues with matrix size mismatches, which required adjusting the formulas and recalculating the matrix dimensions to ensure proper multiplication. After resolving this, the rest of the process mainly involved translating the formulas from the lecture into code, which was relatively straightforward.
+
+\end{document}
