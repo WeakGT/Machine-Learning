@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}   % For mathematical symbols and equations
+\usepackage{geometry}  % For adjusting page margins
+\usepackage{enumitem}  % For customizing itemize spacing
+\geometry{a4paper, margin=1in}
+
+\title{Machine Learning Assignment 5 Report}
+\author{111062117, Hsiang-Sheng Huang}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Why ReLU is Preferred Over Sigmoid in Convolutional Blocks? (1\%)}
+
+ReLU is preferred over Sigmoid due to:
+\begin{itemize}[topsep=0pt, itemsep=0pt]
+    \item \textbf{Avoiding Vanishing Gradients:} ReLU maintains non-zero gradients for positive inputs, enabling deeper networks to train efficiently.
+    \item \textbf{Efficiency:} ReLU involves simple thresholding ($f(x) = \max(0, x)$), while Sigmoid requires exponentials, making it computationally slower.
+\end{itemize}
+
+\section*{2. CNN Architecture Design and Parameter Choices (2\%)}
+
+\subsection*{Architecture Design}
+Two convolutional layers, two max-pooling layers, and two fully connected layers:
+\begin{itemize}[topsep=0pt, itemsep=0pt]
+    \item \textbf{Conv1:} \(3 \times 3\) filters, 16 channels, stride \(1\), padding \(1\).
+    \item \textbf{MaxPool1:} \(2 \times 2\) pooling, stride \(2\).
+    \item \textbf{Conv2:} \(3 \times 3\) filters, 32 channels, stride \(1\), padding \(1\).
+    \item \textbf{MaxPool2:} \(2 \times 2\) pooling, stride \(2\).
+    \item \textbf{Dense1:} 64 neurons (ReLU).
+    \item \textbf{Dense2:} 1 neuron (Sigmoid).
+\end{itemize}
+
+\subsection*{Parameter Choices}
+These choices balance computational cost, model complexity, and feature extraction.
+\begin{itemize}[topsep=0pt, itemsep=0pt]
+    \item \textbf{Filter Size:} \(3 \times 3\) provides a good balance of spatial resolution and efficiency.
+    \item \textbf{Pooling Size:} \(2 \times 2\) reduces dimensions while retaining important features, minimizing overfitting risk.
+    \item \textbf{Stride:} Stride \(1\) in Conv layers retains spatial dimensions, while \(2\) in pooling layers reduces computation.
+\end{itemize}
+
+\section*{3. Comparison of Learnable Parameters Between CNN and Lab4 NN (2\%)}
+
+\subsection*{CNN Model (Bias Ignored)}
+\begin{itemize}[topsep=0pt, itemsep=0pt]
+    \item \textbf{Conv1:} \(3 \times 3 \times 1 \times 16 = 144\) weights.
+    \item \textbf{Conv2:} \(3 \times 3 \times 16 \times 32 = 4608\) weights.
+    \item \textbf{Dense1:} \(2048 \times 64 = 131072\) weights.
+    \item \textbf{Dense2:} \(64 \times 1 = 64\) weights.
+\end{itemize}
+\textbf{Total Parameters:} \(135,888\)
+
+\subsection*{Lab4 NN Model (Bias Ignored)}
+\begin{itemize}[topsep=0pt, itemsep=0pt]
+    \item Layer 1: \(28 \times 28 \times 128 = 100,352\) weights.
+    \item Layer 2: \(128 \times 128 = 16,384\) weights.
+    \item Layer 3: \(128 \times 64 = 8,192\) weights.
+    \item Layers 4-7: \(64 \times 64 = 4,096 \times 4 = 16,384\) weights.
+    \item Layers 8-11: \(64 \times 32 = 2,048 \times 4 = 8,192\) weights.
+    \item Layers 12-15: \(32 \times 8 = 256 \times 4 = 1,024\) weights.
+    \item Layer 16: \(8 \times 4 = 32\) weights.
+\end{itemize}
+\textbf{Total Parameters:} \(150,560\)
+
+\subsection*{Comparison}
+\begin{itemize}[topsep=0pt, itemsep=0pt]
+    \item \textbf{CNN Model:} \(135,888\) parameters.
+    \item \textbf{Lab4 NN Model:} \(150,560\) parameters.
+\end{itemize}
+
+The CNN model uses fewer parameters due to shared weights in convolutional layers, making it more efficient for image data.
+
+\end{document}
