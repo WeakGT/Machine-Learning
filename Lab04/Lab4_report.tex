@@ -1,0 +1,53 @@
+\documentclass[10pt]{article}  % 將字體設為 10pt
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+% 手動添加標題，減少空間佔用
+\begin{center}
+    \textbf{\large Machine Learning Assignment 4 Report}\\
+    111062117, Hsiang-Sheng Huang \\
+    \today
+\end{center}
+
+\section*{1. Differences between Sigmoid and Softmax Activation Functions}
+\begin{itemize}
+    \item \textbf{Sigmoid} is used for binary classification. It outputs a probability between 0 and 1:
+    \[
+    \sigma(Z) = \begin{cases}
+    \frac{1}{1 + e^{-Z}}, & Z \geq 0 \\
+    \frac{e^Z}{1 + e^Z}, & \text{otherwise}
+    \end{cases}
+    \]
+    \item \textbf{Softmax} is used for multi-class classification. It outputs a probability distribution:
+    \[
+    \sigma(\vec{Z})_i = \frac{e^{Z_i - b}}{\sum_{j=1}^{C} e^{Z_j - b}}, \quad b = \max_{j=1}^C Z_j
+    \]
+\end{itemize}
+
+\section*{2. Reasons for Loss Oscillation}
+\begin{itemize}
+    \item \textbf{High Learning Rate}: Causes the model to overshoot, resulting in loss fluctuations.
+    \item \textbf{Batch Size Variation}: Different batches lead to varying gradient estimates, causing minor oscillations.
+\end{itemize}
+
+\section*{3. Effect of Learning Rate and Batch Size on Training Time}
+\begin{itemize}
+    \item \textbf{Learning Rate}: Higher learning rates can reduce training time by making larger updates, but they increase the risk of overshooting or divergence. Lower learning rates tend to increase training time but usually lead to more stable convergence.
+    \item \textbf{Batch Size}:
+        \begin{itemize}
+            \item \textbf{Larger Batch Sizes}: Larger batches provide a more accurate estimate of the gradient, leading to faster convergence in terms of epochs. However, they require more memory and may not always lead to faster training in terms of wall-clock time due to computation limits.
+            \item \textbf{Smaller Batch Sizes}: Smaller batches make more frequent updates. However, the gradient estimates are noisier, which can lead to oscillations in the loss but might help in avoiding local minima by adding more exploration.
+        \end{itemize}
+\end{itemize}
+
+\section*{4. Regression Results}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{lab4_basic_regression.jpg}
+\end{figure}
+
+\end{document}
